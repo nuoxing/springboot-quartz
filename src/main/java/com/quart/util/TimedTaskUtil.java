@@ -23,7 +23,7 @@ import org.apache.commons.lang3.StringUtils;
  * 〈一句话功能简述〉
  * 〈功能详细描述〉
  * 定时任务工具类
- * @author jiangguofu
+ * @author 
  * @version 2018年4月28日
  * @see TimedTaskUtil
  * @since

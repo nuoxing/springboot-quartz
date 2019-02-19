@@ -5,32 +5,30 @@
 package com.quart.util;
 
 
+import java.util.ArrayList;
 import java.util.Date;
-
-import javax.annotation.Resource;
+import java.util.List;
+import java.util.Set;
 
 import org.quartz.CronScheduleBuilder;
 import org.quartz.CronTrigger;
 import org.quartz.JobBuilder;
 import org.quartz.JobDetail;
+import org.quartz.JobExecutionContext;
 import org.quartz.JobKey;
 import org.quartz.Scheduler;
 import org.quartz.SchedulerException;
-import org.quartz.SchedulerFactory;
 import org.quartz.Trigger;
 import org.quartz.Trigger.TriggerState;
 import org.quartz.TriggerBuilder;
 import org.quartz.TriggerKey;
-import org.quartz.impl.StdSchedulerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.scheduling.quartz.SchedulerFactoryBean;
+import org.quartz.impl.matchers.GroupMatcher;
 
 
 /**
  * 定时任务动态增加删除修改 〈一句话功能简述〉 〈功能详细描述〉
  * 
- * @author jiangguofu
+ * @author 
  * @version 2017年12月20日
  * @see QuartzManager
  * @since
@@ -338,4 +336,69 @@ public class QuartzManager
         CronTrigger trigger = (CronTrigger)scheduler.getTrigger(triggerKey);
         return trigger;
     }
+    
+    
+    
+
+    /**
+     * 获取所有计划中的任务列表
+     * 
+     * @return
+     * @throws SchedulerException
+     */
+  /*  public List<TaskDO> getAllJob() throws SchedulerException {
+        GroupMatcher<JobKey> matcher = GroupMatcher.anyJobGroup();
+        Set<JobKey> jobKeys = scheduler.getJobKeys(matcher);
+        List<TaskDO> jobList = new ArrayList<TaskDO>();
+        for (JobKey jobKey : jobKeys) {
+            List<? extends Trigger> triggers = scheduler.getTriggersOfJob(jobKey);
+            for (Trigger trigger : triggers) {
+                TaskDO job = new TaskDO();
+                job.setJobName(jobKey.getName());
+                job.setJobGroup(jobKey.getGroup());
+                job.setDescription("触发器:" + trigger.getKey());
+                Trigger.TriggerState triggerState = scheduler.getTriggerState(trigger.getKey());
+                job.setJobStatus(triggerState.name());
+                if (trigger instanceof CronTrigger) {
+                    CronTrigger cronTrigger = (CronTrigger) trigger;
+                    String cronExpression = cronTrigger.getCronExpression();
+                    job.setCronExpression(cronExpression);
+                }
+                jobList.add(job);
+            }
+        }
+        return jobList;
+    }
+    */
+
+    /**
+     * 所有正在运行的job
+     * 
+     * @return
+     * @throws SchedulerException
+     */
+   /* public List<TaskDO> getRunningJob() throws SchedulerException {
+        List<JobExecutionContext> executingJobs = scheduler.getCurrentlyExecutingJobs();
+        List<TaskDO> jobList = new ArrayList<TaskDO>(executingJobs.size());
+        for (JobExecutionContext executingJob : executingJobs) {
+            TaskDO job = new TaskDO();
+            JobDetail jobDetail = executingJob.getJobDetail();
+            JobKey jobKey = jobDetail.getKey();
+            Trigger trigger = executingJob.getTrigger();
+            job.setJobName(jobKey.getName());
+            job.setJobGroup(jobKey.getGroup());
+            job.setDescription("触发器:" + trigger.getKey());
+            Trigger.TriggerState triggerState = scheduler.getTriggerState(trigger.getKey());
+            job.setJobStatus(triggerState.name());
+            if (trigger instanceof CronTrigger) {
+                CronTrigger cronTrigger = (CronTrigger) trigger;
+                String cronExpression = cronTrigger.getCronExpression();
+                job.setCronExpression(cronExpression);
+            }
+            jobList.add(job);
+        }
+        return jobList;
+    }
+    */
+
 }
