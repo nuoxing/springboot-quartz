@@ -20,13 +20,15 @@ public class QuartTest {
 	@Test
 	public void test() throws Exception{
 		
-		Class clazz = Class.forName("com.quart.job.HelloWorldJob");
+		/*Class clazz = Class.forName("com.quart.job.HelloWorldJob");
 		quartzManager.addJob("jobName", "jobGroupName", "triggerName", "triggerGroupName",
-				clazz , "0/1 * * * * ?", null);
-		Thread.sleep(5000);
-		quartzManager.removeJob("jobName", "jobGroupName", "triggerName", "triggerGroupName");
-		System.out.println("移出");
-		Thread.sleep(5000);
+				clazz , "0/10 * * * * ?", null);
+		quartzManager.addJob("jobName2", "jobGroupName2", "triggerName2", "triggerGroupName2",
+				clazz , "0/10 * * * * ?", null);*/
+		Thread.sleep(500000);
+		//quartzManager.removeJob("jobName", "jobGroupName", "triggerName", "triggerGroupName");
+		//System.out.println("移出");
+		//Thread.sleep(5000);
 	}
 	
 }

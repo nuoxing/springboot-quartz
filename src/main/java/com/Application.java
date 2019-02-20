@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Import;
  * @SpringBootApplication springboot应用注解
  *
  */
-@SpringBootApplication
+@SpringBootApplication(exclude={DataSourceAutoConfiguration.class})
 public class Application extends SpringBootServletInitializer{
 
     public static void main(String[] args) {

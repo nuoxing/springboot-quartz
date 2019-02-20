@@ -52,10 +52,10 @@
 			<artifactId>spring-boot-starter-jdbc</artifactId>
 		</dependency> -->
 		<!-- 添加MySQL数据库驱动依赖包. -->
-	<!-- 	<dependency>
+	 	<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-		</dependency> -->
+		</dependency> 
 		<!-- JSTL（JSP Standard Tag Library，JSP标准标签库)是一个不断完善的开放源代码的JSP标签库，是由apache的jakarta小组来维护的。 -->
 		<!-- spring-boot mybatis依赖： 请不要使用1.0.0版本，因为还不支持拦截器插件， -->
 	<!-- 	<dependency>
