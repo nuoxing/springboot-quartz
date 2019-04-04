@@ -5,16 +5,12 @@
 package com.quart.util;
 
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
-import java.util.Set;
 
 import org.quartz.CronScheduleBuilder;
 import org.quartz.CronTrigger;
 import org.quartz.JobBuilder;
 import org.quartz.JobDetail;
-import org.quartz.JobExecutionContext;
 import org.quartz.JobKey;
 import org.quartz.Scheduler;
 import org.quartz.SchedulerException;
@@ -22,7 +18,6 @@ import org.quartz.Trigger;
 import org.quartz.Trigger.TriggerState;
 import org.quartz.TriggerBuilder;
 import org.quartz.TriggerKey;
-import org.quartz.impl.matchers.GroupMatcher;
 
 
 /**
@@ -98,7 +93,7 @@ public class QuartzManager
         if (date != null)
         {
             // 启动
-            if (!scheduler.isShutdown())
+            if (scheduler.isShutdown())
             {
                 scheduler.start();
             }
@@ -297,6 +292,13 @@ public class QuartzManager
     /**
      * 
      * 描述: 获取任务状态<br>
+     *  STATE_BLOCKED 4 阻塞  任务线程阻塞
+		STATE_COMPLETE 2 完成 
+		STATE_ERROR 3 错误 
+		STATE_NONE -1 不存在 
+		STATE_NORMAL 0 正常   任务存在  不一定在运行
+		STATE_PAUSED 1 暂停** 
+
      * 1、…<br>
      * 2、…<br>
      * 实现: <br>

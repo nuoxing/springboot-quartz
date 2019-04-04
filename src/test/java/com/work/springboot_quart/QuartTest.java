@@ -3,6 +3,7 @@ package com.work.springboot_quart;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.quartz.SchedulerException;
+import org.quartz.Trigger.TriggerState;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -48,8 +49,16 @@ public class QuartTest {
 	//然后 之前跑着任务的应用 就是停止 任务 不再执行的了
 	@Test
 	public void test2() throws SchedulerException, InterruptedException{
-		quartzManager.removeJob("jobName", "jobGroupName", "triggerName", "triggerGroupName");
+		//System.out.println("移出");
+		//quartzManager.removeJob("jobName", "jobGroupName", "triggerName", "triggerGroupName");
 		Thread.sleep(5000000);
+	}
+	
+	
+	@Test
+	public void test3() throws SchedulerException{
+		TriggerState state = quartzManager.getJobState("triggerName", "triggerGroupName");
+		System.out.println(state);
 	}
 	
 }
