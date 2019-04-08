@@ -13,7 +13,7 @@ import com.quart.service.UserService;
 
 @DisallowConcurrentExecution //作业不并发
 @Component
-public class HelloWorldJob implements Job{
+public class HelloWorldJob2 implements Job{
 
    
 	@Autowired
@@ -21,8 +21,8 @@ public class HelloWorldJob implements Job{
 	
 	public void execute(JobExecutionContext arg0) throws JobExecutionException {
         
-        System.out.println("欢迎使用yyblog,这是一个定时任务  --小卖铺的老爷爷!");
-        userService.printHello();
+        System.out.println("欢迎使用yyblog,这是一个定时任务  --小卖铺的老爷爷!2");
+		
     }
 
 }

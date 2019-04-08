@@ -30,15 +30,15 @@ public class QuartTest {
 	@Test
 	public void test() throws Exception{
 		quartzManager.removeJob("jobName", "jobGroupName", "triggerName", "triggerGroupName");
-		//quartzManager.removeJob("jobName2", "jobGroupName2", "triggerName2", "triggerGroupName2");
+		quartzManager.removeJob("jobName2", "jobGroupName", "triggerName", "triggerGroupName2");
 		TriggerState state = quartzManager.getJobState("triggerName", "triggerGroupName");
-		if (state!=TriggerState.NORMAL){
-			Class clazz = Class.forName("com.quart.job.HelloWorldJob");
-			quartzManager.addJob("jobName", "jobGroupName", "triggerName", "triggerGroupName",
-					clazz , "0/5 * * * * ?", null);
-		}
-	/*	quartzManager.addJob("jobName2", "jobGroupName2", "triggerName2", "triggerGroupName2",
-				clazz , "0/60 * * * * ?", null);*/
+		Class clazz = Class.forName("com.quart.job.HelloWorldJob");
+		Class clazz2 = Class.forName("com.quart.job.HelloWorldJob2");
+		quartzManager.addJob("jobName", "jobGroupName", "triggerName", "triggerGroupName",
+				clazz , "0/5 * * * * ?", null);
+		quartzManager.addJob("jobName2", "jobGroupName", "triggerName2", "triggerGroupName",
+				clazz2 , "0/60 * * * * ?", null);
+
 		Thread.sleep(5000000);
 		//quartzManager.removeJob("jobName", "jobGroupName", "triggerName", "triggerGroupName");
 		//System.out.println("移出");

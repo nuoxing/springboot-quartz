@@ -14,11 +14,14 @@ public class JobFactory extends AdaptableJobFactory {
     @Autowired
     private AutowireCapableBeanFactory capableBeanFactory;
 
+    /**
+     * 自定义job创建的逻辑
+     */
     @Override
     protected Object createJobInstance(TriggerFiredBundle bundle) throws Exception {
         //调用父类的方法
         Object jobInstance = super.createJobInstance(bundle);
-        //进行注入
+        //进行注入 注入job中需要的bean   
         capableBeanFactory.autowireBean(jobInstance);
         return jobInstance;
     }
