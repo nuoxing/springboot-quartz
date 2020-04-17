@@ -36,14 +36,7 @@ public class JobHanderService {
 	public void addJobToQuartz(){
 		
 		try {
-			addLockUpUnLockJob();
-			addQdApprovalJob();
-			addQdPdfCreateJob();
-			addJyzxSynJob();
-			addJyzxSendMsgJob();
-			addJyzxSend2SJJob();
-			addDisciplineSendJob();
-			addDisciplineGetTokenJob();
+		
 		} catch (Exception e) {
 			StringWriter sw = new StringWriter();
 			e.printStackTrace(new PrintWriter(sw));
@@ -54,7 +47,7 @@ public class JobHanderService {
 	
 	
 
-	private void addDisciplineGetTokenJob() throws Exception{
+	private void addnJob() throws Exception{
 		TriggerState state = quartzManager.getJobState("triggerName_DisciplineGetTokenJob", "triggerGroupName");
 	    if (state!=TriggerState.NORMAL){
 			quartzManager.removeJob("jobName_DisciplineGetTokenJob", "jobGroupName", "triggerName_DisciplineGetTokenJob", "triggerGroupName");
