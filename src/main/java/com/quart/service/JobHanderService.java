@@ -48,11 +48,11 @@ public class JobHanderService {
 	
 
 	private void addnJob() throws Exception{
-		TriggerState state = quartzManager.getJobState("triggerName_DisciplineGetTokenJob", "triggerGroupName");
+		TriggerState state = quartzManager.getJobState("triggerName_GetTokenJob", "triggerGroupName");
 	    if (state!=TriggerState.NORMAL){
-			quartzManager.removeJob("jobName_DisciplineGetTokenJob", "jobGroupName", "triggerName_DisciplineGetTokenJob", "triggerGroupName");
-			Class clazz = Class.forName("com.aisino.aic.quartz.job.DisciplineGetTokenJob");
-			quartzManager.addJob("jobName_DisciplineGetTokenJob", "jobGroupName", "triggerName_DisciplineGetTokenJob", "triggerGroupName",
+			quartzManager.removeJob("jobName_GetTokenJob", "jobGroupName", "triggerName_GetTokenJob", "triggerGroupName");
+			Class clazz = Class.forName("com.aisino.aic.quartz.job.ineGetTokenJob");
+			quartzManager.addJob("jobName_GetTokenJob", "jobGroupName", "triggerName_GetTokenJob", "triggerGroupName",
 					clazz , " 0 0/55 * ? * *", null);
 		}else{
 		
